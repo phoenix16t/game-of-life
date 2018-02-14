@@ -24,4 +24,5 @@ This will run the build and serve the project on localhost:3000
 ## Versioning
 Version | Update
 --- | --- |
+0.0.2 | Added basic layout
 0.0.1 | Initial commit
