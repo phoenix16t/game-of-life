@@ -2,13 +2,13 @@ import React from 'react';
 import * as constants from '../constants';
 
 export default class PlayerSelector extends React.Component {
-  createlayerOption(player, i) {
+  createPlayerOption(player, i) {
     return <option value={player} key={i}>{player}</option>;
   };
   
   createPlayerOptionsList(playerNames) {
     const players = Object.keys(constants.PLAYERS);
-    return players.map(this.createlayerOption);
+    return players.map(this.createPlayerOption);
   };
 
   render() {

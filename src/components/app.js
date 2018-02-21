@@ -34,14 +34,14 @@ export default class App extends React.Component {
     this.setState({ gameField: gameField });
   };
 
+  handlePlayerChange(evt) {
+    this.setState({ playerName: evt.target.value });
+  };
+
   initialize() {
     const emptyField = utils.createEmptyField();
     const gameField = utils.addPlayerToField(emptyField, this.state.playerName);
     this.commitGameField(gameField);
-  };
-
-  handlePlayerChange(evt) {
-    this.setState({ playerName: evt.target.value });
   };
 
   step() {
