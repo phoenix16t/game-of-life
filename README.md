@@ -24,6 +24,7 @@ This will run the build and serve the project on localhost:3000
 ## Versioning
 Version | Update
 --- | --- |
+1.0.0 | Adding dropdown and more players - MVP
 0.0.5 | Adding animation
 0.0.4 | Adding player to game field
 0.0.3 | Added basic react rendering

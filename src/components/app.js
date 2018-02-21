@@ -1,18 +1,29 @@
 import React from 'react';
 import AppView from './app-view';
+import PlayerSelector from './player-selector';
 import * as constants from '../constants';
 import * as utils from '../utils';
 
 export default class App extends React.Component {
   constructor() {
     super();
+    this.handlePlayerChange = this.handlePlayerChange.bind(this);
     this.step = this.step.bind(this);
 
-    this.state = { gameField: [] };
+    this.state = {
+      gameField: [],
+      playerName: Object.keys(constants.PLAYERS)[0]
+    };
   };
 
   componentDidMount() {
     setInterval(this.step, constants.SPEED);
+  };
+
+  componentDidUpdate(props, state) {
+    if(state.playerName !== this.state.playerName) {
+      this.initialize();
+    }
   };
 
   componentWillMount() {
@@ -25,8 +36,12 @@ export default class App extends React.Component {
 
   initialize() {
     const emptyField = utils.createEmptyField();
-    const gameField = utils.addPlayerToField(emptyField);
+    const gameField = utils.addPlayerToField(emptyField, this.state.playerName);
     this.commitGameField(gameField);
+  };
+
+  handlePlayerChange(evt) {
+    this.setState({ playerName: evt.target.value });
   };
 
   step() {
@@ -36,6 +51,11 @@ export default class App extends React.Component {
   };
 
   render() {
-    return <AppView gameField={ this.state.gameField } />;
+    return (
+      <div>
+        <PlayerSelector handleChange={ this.handlePlayerChange } />
+        <AppView gameField={ this.state.gameField } />
+      </div>
+    );
   };
 };

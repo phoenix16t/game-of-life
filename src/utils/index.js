@@ -1,7 +1,7 @@
 import * as constants from '../constants';
 
-export const addPlayerToField = (gameField) => {
-  const player = constants.PLAYERS.glider;
+export const addPlayerToField = (gameField, playerName) => {
+  const player = constants.PLAYERS[playerName];
 
   const playerHeight = player.length;
   const playerWidth = player[0].length;
