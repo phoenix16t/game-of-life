@@ -7,55 +7,50 @@ import * as utils from '../utils';
 export default class App extends React.Component {
   constructor() {
     super();
-    this.handlePlayerChange = this.handlePlayerChange.bind(this);
-    this.step = this.step.bind(this);
-
     this.state = {
       gameField: [],
       playerName: Object.keys(constants.PLAYERS)[0]
     };
   };
 
-  componentDidMount() {
+  componentDidMount = () => {
     setInterval(this.step, constants.SPEED);
   };
 
-  componentDidUpdate(props, state) {
+  componentDidUpdate = (props, state) => {
     if(state.playerName !== this.state.playerName) {
       this.initialize();
     }
   };
 
-  componentWillMount() {
+  componentWillMount = () => {
     this.initialize();
   };
 
-  commitGameField(gameField) {
+  commitGameField = (gameField) => {
     this.setState({ gameField: gameField });
   };
 
-  handlePlayerChange(evt) {
+  handlePlayerChange = (evt) => {
     this.setState({ playerName: evt.target.value });
   };
 
-  initialize() {
+  initialize = () => {
     const emptyField = utils.createEmptyField();
     const gameField = utils.addPlayerToField(emptyField, this.state.playerName);
     this.commitGameField(gameField);
   };
 
-  step() {
+  step = () => {
     const accumObj = utils.createAccumObj(this.state.gameField);
     const gameField = utils.createNextGameField(accumObj);
     this.commitGameField(gameField);
   };
 
-  render() {
-    return (
-      <div>
-        <PlayerSelector handleChange={ this.handlePlayerChange } />
-        <AppView gameField={ this.state.gameField } />
-      </div>
-    );
+  render = () => {
+    return [
+      <PlayerSelector handleChange={ this.handlePlayerChange } />,
+      <AppView gameField={ this.state.gameField } />
+    ];
   };
 };

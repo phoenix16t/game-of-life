@@ -6,25 +6,25 @@ export default class AppView extends React.Component {
     this.renderRow = this.renderRow.bind(this);
   }
 
-  renderCell(cell, i) {
+  renderCell = (cell, i) => {
     let cls = 'cell';
     if(cell === 1) { cls += ' red'; }
-    return <div className={cls} key={i} />;
+    return <div className={ cls } key={ i } />;
   };
 
-  renderField() {
+  renderField = () => {
     return this.props.gameField.map(this.renderRow);
   };
 
-  renderRow(row, i) {
+  renderRow = (row, i) => {
     return (
-      <div className="row" key={i}>
+      <div className="row" key={ i }>
         { row.map(this.renderCell) }
       </div>
     );
   };
 
-  render() {
+  render = () => {
     return (
       <div className="app">
         { this.renderField() }

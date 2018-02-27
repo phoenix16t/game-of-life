@@ -24,6 +24,7 @@ This will run the build and serve the project on localhost:3000
 ## Versioning
 Version | Update
 --- | --- |
+1.0.2 | Updating webpack, switching to arrow functions
 1.0.1 | Small updates
 1.0.0 | Adding dropdown and more players - MVP
 0.0.5 | Adding animation
